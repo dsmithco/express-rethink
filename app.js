@@ -1,20 +1,21 @@
 'use-strict';
 
-import express from 'express';
-import path from 'path';
-import favicon from 'serve-favicon';
-import logger from 'morgan';
-import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
-import index from './routes/index';
-import users from './routes/users';
-import routes from './src/routes';
-import sassMiddleware from 'node-sass-middleware';
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var React = require('react');
+var renderToString = require('react-dom/server').renderToString;
+var match = require('react-router').match;
+var RouterContext = require('react-router').RouterContext;
+var index = require('./routes/index');
+var users = require('./routes/users');
+var routes = require('./public/build/routes.js');
+var sassMiddleware = require('node-sass-middleware');
 
-const app = express();
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -59,7 +60,7 @@ app.get('*', (req, res) => {
       let markup;
       if (renderProps) {
         // if the current route matched we have renderProps
-        markup = renderToString(<RouterContext {...renderProps}/>);
+        markup = renderToString(React.createElement(RouterContext, renderProps));
       } else {
         // otherwise we can render a 404 page
         // markup = renderToString(<NotFoundPage/>);
