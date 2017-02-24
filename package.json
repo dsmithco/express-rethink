@@ -43,6 +43,20 @@
     "nodemon": "^1.11.0",
     "webpack": "^2.2.1"
   },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ],
+    "ignore": [
+      "node_modules"
+    ]
+  },
   "engines": {
     "node": "6.9.2"
   }
