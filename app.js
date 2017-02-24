@@ -57,7 +57,7 @@ app.get('*', (req, res) => {
       }
 
       // generate the React markup for the current route
-      let markup;
+      var markup;
       if (renderProps) {
         // if the current route matched we have renderProps
         markup = renderToString(React.createElement(RouterContext, renderProps));
