@@ -9,7 +9,7 @@ import Page from './components/Page';
 const routes = (
   <Route path="/" component={Layout}>
     <IndexRoute component={Home}/>
-    <Route path="pages/:id" component={Page}/>
+    <Route path="pages/:id" component={Page} />
     {/* <Route path="*" component={NotFoundPage}/> */}
   </Route>
 );

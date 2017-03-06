@@ -6,11 +6,13 @@ import routes from './routes';
 export default class Index extends React.Component {
   render() {
     return (
-      <Router history={browserHistory} routes={routes} onUpdate={() => window.scrollTo(0, 0)}/>
+      <div>
+        <Router history={browserHistory} domData={this.props.domData} routes={routes} onUpdate={() => window.scrollTo(0, 0)}/>
+      </div>
     );
   }
 }
 
-var container = document.getElementById('react-container')
+var container = document.getElementById('react-container');
 
-ReactDOM.render(<Index host={container.getAttribute('data-host')} />, container);
+ReactDOM.render(<Index domData={document.domData} />, container);

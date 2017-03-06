@@ -6,7 +6,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="app-container">
-        Home Page
+        Home Page!!
       </div>
     );
   }

@@ -6,7 +6,10 @@
 
   </head>
   <body>
-    <div id="react-container" data-host="">
+    <script type="text/javascript">
+      var domData = <%- JSON.stringify(domData) %>;
+    </script>
+    <div id="react-container">
       <%- markup -%>
     </div>
     <script type="text/javascript" src="/build/main.js"></script>

@@ -4,11 +4,13 @@
   "private": true,
   "main": "bin/www",
   "scripts": {
-    "start": "node_modules/.bin/cross-env node_modules/.bin/babel-node --presets 'react,es2015' bin/www",
-    "build": "./node_modules/.bin/webpack --progress --colors -p",
-    "server": "./node_modules/.bin/nodemon bin/www"
+    "start-dev": "webpack --progress --colors --watch & node_modules/.bin/cross-env node_modules/.bin/nodemon --exec node_modules/.bin/babel-node --presets 'react,es2015' bin/www",
+    "start": "NODE_ENV=production node_modules/.bin/babel-node --presets 'react,es2015' bin/www",
+    "build": "node_modules/.bin/webpack --progress --colors -p",
+    "server": "node_modules/.bin/nodemon bin/www"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.2.5",
@@ -26,10 +28,12 @@
     "morgan": "~1.7.0",
     "pg": "^6.1.2",
     "pg-hstore": "^2.3.2",
+    "phantom": "^4.0.0",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-resolver": "^3.1.0",
     "react-router": "^3.0.2",
     "reactstrap": "^4.2.0",
     "sequelize": "^3.30.2",
