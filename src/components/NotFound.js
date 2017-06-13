@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-export default class Home extends React.Component {
+export default class NotFound extends React.Component {
   render() {
     return (
       <div className="home-container">
-        Home Page!!
+        404 Page not found
       </div>
     );
   }

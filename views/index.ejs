@@ -3,15 +3,10 @@
   <head>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"> -->
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
-
+    <script type="text/javascript" src="/javascripts/jquery-3.2.1.min.js"></script>
   </head>
   <body>
-    <script type="text/javascript">
-      var domData = <%- JSON.stringify(domData) %>;
-    </script>
-    <div id="react-container">
-      <%- markup -%>
-    </div>
+    <%- markup -%>
     <script type="text/javascript" src="/build/main.js"></script>
   </body>
 </html>

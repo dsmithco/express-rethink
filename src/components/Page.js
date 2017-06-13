@@ -3,7 +3,47 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import axios from 'axios';
+import Block from './Block'
 import PageController from '../../controllers/PageController';
+
+let blocks = [
+  {
+    title: 'some title',
+    body: 'this is a body',
+    blockWidth: 'col-12',
+    blocks: [
+      {
+        title: 'Inner Block',
+        body: 'this is a body laksjdhfk lajshfk ajshf klajshfl kajsdfk jasd klfjahskl fjhakls fjhaks djf',
+        blockWidth: 'col-3'
+      },
+      {
+        title: 'Another Inner Block',
+        body: 'this is another body askjdfhk ajshfk jashf ',
+        blockWidth: 'col-3'
+      }
+      ,
+      {
+        title: 'Another Inner Block',
+        body: 'this is another body',
+        blockWidth: 'col-3'
+      }
+      ,
+      {
+        title: 'Another Inner Block',
+        body: 'this is another body',
+        blockWidth: 'col-3'
+      }
+    ]
+  },
+  {
+    title: 'Another title',
+    body: 'this is another body',
+    blocks: [
+
+    ]
+  }
+];
 
 export default class Page extends React.Component {
 
@@ -17,25 +57,22 @@ export default class Page extends React.Component {
   componentDidMount() {
     var that = this;
     var pc = new PageController();
-    pc.show(this.props.params.id).then(function(reponse){
-      if(reponse && reponse.data){
-        var title = reponse.data.title;
-        that.setState({
-          title: title
-        });
-      }
-    });
+    // pc.show(this.props.params.id).then(function(reponse){
+    //   if(reponse && reponse.data){
+    //     var title = reponse.data.title;
+    //     that.setState({
+    //       title: title
+    //     });
+    //   }
+    // });
   }
 
   render() {
 
       return (
         <div className="app-container">
-          Page {this.props.params.id}
-          <br/>
-          {this.state.title}
-          <br/>
-          <Button color="danger">Danger!</Button>
+          {this.props.match.params.id}
+          {blocks.map( (blockParams, index) => <Block key={index} blockParams={blockParams} /> )}
         </div>
       );
 

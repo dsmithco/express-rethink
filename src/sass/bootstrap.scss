@@ -52,3 +52,28 @@
 
 // Utility classes
 @import "utilities";
+
+.block-container {
+  box-shadow: 0px -100000px 0px rgba(0,0,0,.05) inset;
+  display: block;
+  padding: 10px 20px;
+  margin-bottom: 1px;
+}
+
+.block-container.col-3 {
+  min-width: 32%;
+  display: inline-block;
+  margin-right: 1.33%
+}
+
+.block-wrapper {
+  margin: auto;
+}
+
+.block-container > .wrapper > .title {
+  font-size: 20px;
+}
+
+.block-container > .wrapper > .body {
+  line-height: 1.4em;
+}

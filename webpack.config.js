@@ -7,7 +7,7 @@ module.exports = {
     routes:  './src/routes.js'
   },
   output: {
-    path: 'public/build',
+    path: path.resolve(__dirname, 'public/build'),
     filename: '[name].js'
   },
   module: {
@@ -24,7 +24,6 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       mangle: true,
