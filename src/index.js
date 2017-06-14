@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory'
-import App from './App'
+import App from './components/App'
 
 const browserHistory = createBrowserHistory()
 
@@ -21,4 +21,4 @@ export default class Index extends React.Component {
 
 var container = document.getElementById('react-container');
 
-ReactDOM.render(<Index domData={document.domData} />, container);
+ReactDOM.render(<Index />, container);

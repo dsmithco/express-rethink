@@ -4,7 +4,6 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server'
 import { match, RouterContext, matchPath, StaticRouter } from 'react-router';
 import createMemoryHistory from 'history/createMemoryHistory'
-import PageController from '../controllers/PageController'
 import App from '../src/components/App';
 
 const memoryHistory = createMemoryHistory()

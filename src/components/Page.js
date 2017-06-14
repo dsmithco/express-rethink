@@ -4,7 +4,6 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import axios from 'axios';
 import Block from './Block'
-import PageController from '../../controllers/PageController';
 
 let blocks = [
   {
@@ -56,7 +55,6 @@ export default class Page extends React.Component {
 
   componentDidMount() {
     var that = this;
-    var pc = new PageController();
     // pc.show(this.props.params.id).then(function(reponse){
     //   if(reponse && reponse.data){
     //     var title = reponse.data.title;
@@ -71,7 +69,6 @@ export default class Page extends React.Component {
 
       return (
         <div className="app-container">
-          {this.props.match.params.id}
           {blocks.map( (blockParams, index) => <Block key={index} blockParams={blockParams} /> )}
         </div>
       );
