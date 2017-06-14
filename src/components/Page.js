@@ -7,8 +7,13 @@ import Block from './Block'
 
 let blocks = [
   {
-    title: 'some title',
-    body: 'this is a body',
+    title: 'Menu',
+    body: 'this is a body laksjdhfk lajshfk ajshf klajshfl kajsdfk jasd klfjahskl fjhakls fjhaks djf',
+    blockWidth: 'col-12',
+    blockType: 'nav',
+
+  },
+  {
     blockWidth: 'col-12',
     blocks: [
       {
@@ -20,14 +25,12 @@ let blocks = [
         title: 'Another Inner Block',
         body: 'this is another body askjdfhk ajshfk jashf ',
         blockWidth: 'col-3'
-      }
-      ,
+      },
       {
         title: 'Another Inner Block',
         body: 'this is another body',
         blockWidth: 'col-3'
-      }
-      ,
+      },
       {
         title: 'Another Inner Block',
         body: 'this is another body',
