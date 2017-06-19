@@ -15,7 +15,7 @@ export default class BasicBlock extends React.Component {
       <div className={this.state.blockParams.blockWidth + " block-container"}>
         <div className="wrapper">
           <div className="title">
-            {this.state.blockParams.title}
+            {this.state.blockParams.block_type}
           </div>
           <div className="body">
             {this.state.blockParams.body}

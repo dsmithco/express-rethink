@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import React from 'react';
 import users from './routes/users';
+import api from './routes/api';
 import sassMiddleware from 'node-sass-middleware';
 import appRouter from './routes/appRouter'
 
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('*', index);
 app.use('/users', users);
+app.use('/api', api);
 // universal routing and rendering
 app.get('*', appRouter);
 

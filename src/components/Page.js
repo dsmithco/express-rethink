@@ -49,30 +49,38 @@ let blocks = [
 
 export default class Page extends React.Component {
 
-  constructor(props){
-    super(props);
+  constructor(props, context){
+    super(props, context);
     this.state = {
-      title: ''
-    };
+      page: {blocks: []}
+    }
   }
 
   componentDidMount() {
-    var that = this;
-    // pc.show(this.props.params.id).then(function(reponse){
-    //   if(reponse && reponse.data){
-    //     var title = reponse.data.title;
-    //     that.setState({
-    //       title: title
-    //     });
-    //   }
-    // });
+    let that = this;
+
+    if(window.__INITIAL_STATE__.id){
+      that.setState({
+        'page': window.__INITIAL_STATE__
+      })
+    }else{
+      axios.get('http://localhost/api/pages/' + that.props.match.params.id)
+        .then(function(response){
+          that.setState({
+            page: response.data
+          });
+        })
+        .catch(function(error){
+        });
+    }
+      //do what you need here
   }
 
   render() {
 
       return (
         <div className="app-container">
-          {blocks.map( (blockParams, index) => <Block key={index} blockParams={blockParams} /> )}
+          {this.state.page.blocks ? this.state.page.blocks.map( (blockParams, index) => <Block key={index} blockParams={blockParams} /> ) : ''}
         </div>
       );
 

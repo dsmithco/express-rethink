@@ -9,12 +9,9 @@ import Page from './Page';
 import NotFound from './NotFound';
 
 export default class App extends React.Component {
+
   constructor(props) {
     super(props);
-
-  }
-  toggle() {
-
   }
 
   render() {

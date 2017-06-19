@@ -1,12 +1,13 @@
 'use strict';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component {
   render() {
     return (
       <div className="home-container">
-        Home Page!!
+        Home Page!! <Link to="/pages/24">Page</Link>
       </div>
     );
   }
