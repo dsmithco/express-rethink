@@ -4,6 +4,7 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import axios from 'axios';
 import Block from './Block'
+import NavBlock from './BlockTypes/NavBlock'
 
 let blocks = [
   {
@@ -52,35 +53,41 @@ export default class Page extends React.Component {
   constructor(props, context){
     super(props, context);
     this.state = {
-      page: {blocks: []}
+      page: this.props.staticContext || window.__INITIAL_STATE__ || {blocks: []}
     }
   }
 
-  componentDidMount() {
-    let that = this;
+  componentWillMount(nextProps){
+    this.updatePage(nextProps);
+  }
 
-    if(window.__INITIAL_STATE__.id){
-      that.setState({
-        'page': window.__INITIAL_STATE__
-      })
-    }else{
-      axios.get('http://localhost/api/pages/' + that.props.match.params.id)
+  componentWillReceiveProps(nextProps) {
+      this.updatePage(nextProps);
+  }
+
+  updatePage(props) {
+    if(!props || props.match.params.id != this.props.match.params.id){
+      props = props || this.props;
+      let that = this;
+      axios.get('http://rethink.dev/api' + (props.match.params.id ? ('/pages/' + props.match.params.id) : ''))
         .then(function(response){
           that.setState({
             page: response.data
           });
-        })
-        .catch(function(error){
         });
     }
-      //do what you need here
+  }
+
+  shouldComponentUpdate(){
+    return true
   }
 
   render() {
 
       return (
         <div className="app-container">
-          {this.state.page.blocks ? this.state.page.blocks.map( (blockParams, index) => <Block key={index} blockParams={blockParams} /> ) : ''}
+          <NavBlock title={this.state.page.website_meta.name} active={this.props.match.params.id} links={this.state.page.website_meta.pages} />
+          {this.state.page.blocks ? this.state.page.blocks.map( (blockParams) => <Block key={blockParams.id} blockParams={blockParams} /> ) : ''}
         </div>
       );
 

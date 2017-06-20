@@ -10,7 +10,7 @@ import React from 'react';
 import users from './routes/users';
 import api from './routes/api';
 import sassMiddleware from 'node-sass-middleware';
-import appRouter from './routes/appRouter'
+import reactApp from './routes/reactApp'
 
 var app = express();
 
@@ -37,9 +37,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('*', index);
 app.use('/users', users);
+
 app.use('/api', api);
 // universal routing and rendering
-app.get('*', appRouter);
+app.get('*', reactApp);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

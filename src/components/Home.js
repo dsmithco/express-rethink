@@ -7,7 +7,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className="home-container">
-        Home Page!! <Link to="/pages/24">Page</Link>
+        Home Page!! <Link to="/pages/about">Page</Link>
       </div>
     );
   }

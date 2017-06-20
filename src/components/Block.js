@@ -20,7 +20,7 @@ export default class Block extends React.Component {
   }
 
   blockSwitch(blockParams) {
-   switch(blockParams.blockType) {
+   switch(blockParams.block_type) {
      default:
        return <BasicBlock blockParams={blockParams} />
      case 'nav':

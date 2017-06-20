@@ -10,19 +10,17 @@ export default class NavBlock extends React.Component {
         <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <a className="navbar-brand" href="#">{this.props.blockParams.title}</a>
+        <Link className="navbar-brand" to={"/"} >{this.props.title}</Link>
 
         <div className="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <Link className="nav-link" to="/">Home!</Link>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#">Disabled</a>
-            </li>
+            {this.props.links.map((link) => {
+              return (
+                <li className={'nav-item'} key={link.id}>
+                  <Link className={"nav-link " + (link.slug == this.props.active ? 'active' : '')} to={"/pages/" + link.slug} >{link.name}</Link>
+                </li>
+              )
+            })}
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
               <div className="dropdown-menu" aria-labelledby="dropdown01">

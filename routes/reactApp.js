@@ -6,16 +6,13 @@ import { match, RouterContext, matchPath, StaticRouter, staticContext } from 're
 import createMemoryHistory from 'history/createMemoryHistory'
 import App from '../src/components/App';
 import axios from 'axios';
-import serialize from 'serialize-javascript';
 
 const memoryHistory = createMemoryHistory()
 
 /* GET home page. */
 
-
-router.get('/pages/*', (req, res) => {
-
-  axios.get('http://localhost/api' + req.originalUrl).then(function(response){
+function renderPage(req, res){
+  axios.get('http://' + req.headers.host.split(':')[0] + '/api' + req.originalUrl).then(function(response){
       let initialState = response.data
       let markup =  ReactDOMServer.renderToString(
           <StaticRouter context={initialState} location={req.originalUrl} history={memoryHistory}>
@@ -26,8 +23,22 @@ router.get('/pages/*', (req, res) => {
                JSON.stringify(response.data) +
                '</script><div id="react-container">' + markup + '</div>'
       res.render('index', { title: 'Express', markup: markup });
-    }).catch(function(error){});
+    }).catch(function(error){
+    });
+}
 
+router.get('/pages/*', (req, res) => {
+  renderPage(req, res);
+});
+
+router.get('/', (req, res) => {
+  renderPage(req, res);
+});
+
+router.get('/', (req, res) => {
+      let markup = '<script>window.__INITIAL_STATE__ = ' + JSON.stringify({}) + '</script><div id="react-container">' + markup + '</div>';
+
+      res.render('index', { title: 'Express', markup: markup });
 });
 
 router.get('/*', (req, res) => {

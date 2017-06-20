@@ -15,10 +15,10 @@ export default class BasicBlock extends React.Component {
       <div className={this.state.blockParams.blockWidth + " block-container"}>
         <div className="wrapper">
           <div className="title">
-            {this.state.blockParams.block_type}
+            {this.state.blockParams.name}
           </div>
           <div className="body">
-            {this.state.blockParams.body}
+            <div dangerouslySetInnerHTML={{__html: this.state.blockParams.about}} />
           </div>
           {
             this.state.blockParams.blocks && this.state.blockParams.blocks.length > 0 ?
